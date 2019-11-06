@@ -1,0 +1,30 @@
+# Iron March SQL Database
+
+This archive contains the SQL database dump of a backup of the Iron March forum, as well as scripts for converting the separate tables in the database into CSV files, and the CSV files themselves in the directory `csv/`.
+The original link was posted to Iron March's successor forum Fascist Forge in the post https://fascistforge.com/index.php?app=forums&module=forums&controller=topic&id=666, but that link is now dead.
+
+A mirror for an archive containing the database is the following website https://www.bthub.me/hash/1d0554862068bfaba9bd2fc6f75cb69fa420c834 which hosts a magnet link that can be used to download the database by opening the following URL in a torrent client:
+magnet:?xt=urn:btih:1d0554862068bfaba9bd2fc6f75cb69fa420c834
+and selecting the file "The Archives/Iron March - NOOSE Backups/Iron March - Rope Culture Website Backups/Iron March - Rope Culture Backups/database.sql"
+
+Currently the scripts to convert the SQL dump into CSV files only work on a Linux OS.
+To extract CSV files of all tables in the database, run the following scripts in the specified order (from the `scripts/` directory):
+
+```console
+bash split_sql_tables.sh
+python rename_dumps.py
+bash convert_to_sqlite.sh
+bash convert_to_csv.sh
+```
+
+The script `convert_to_sqlite.sh` requires the script `mysql2sqlite`, which was
+downloaded from https://github.com/dumblob/mysql2sqlite
+You will likely need to enable the file `mysql2sqlite` to run as an executable, using the following command:
+
+```console
+chmod +x mysql2sqlite
+```
+
+The prerequisites needed to execute these scripts are:
+- Python distribution with default libraries
+- sqlite3 distribution
